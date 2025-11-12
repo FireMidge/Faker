@@ -14,7 +14,7 @@ class DefaultGenerator
 {
     protected $default;
 
-    public function __construct($default = null)
+    public function __construct(?$default = null)
     {
         trigger_deprecation('fakerphp/faker', '1.16', 'Class "%s" is deprecated, use "%s" instead.', __CLASS__, ChanceGenerator::class);
 

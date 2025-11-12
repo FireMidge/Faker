@@ -127,7 +127,7 @@ class Person extends \Faker\Provider\Person
      *
      * @return string
      */
-    public static function ssn(\DateTime $birthdate = null)
+    public static function ssn(?\DateTime $birthdate = null)
     {
         $birthdate = $birthdate ?? DateTime::dateTimeThisCentury();
 
@@ -137,7 +137,7 @@ class Person extends \Faker\Provider\Person
             $consecutiveNumber = (string) self::numberBetween(100, 999);
 
             $verificationNumber = (
-                (int) $consecutiveNumber[0] * 3
+                    (int) $consecutiveNumber[0] * 3
                     + (int) $consecutiveNumber[1] * 7
                     + (int) $consecutiveNumber[2] * 9
                     + (int) $birthDateString[0] * 5
@@ -146,7 +146,7 @@ class Person extends \Faker\Provider\Person
                     + (int) $birthDateString[3] * 2
                     + (int) $birthDateString[4] * 1
                     + (int) $birthDateString[5] * 6
-            ) % 11;
+                ) % 11;
         } while ($verificationNumber == 10);
 
         return sprintf('%s%s%s', $consecutiveNumber, $verificationNumber, $birthDateString);
